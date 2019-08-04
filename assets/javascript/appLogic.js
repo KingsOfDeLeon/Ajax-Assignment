@@ -102,7 +102,7 @@ $(document).ready(function () {
             numGifs = 25;
         }
         if (numGifs > 99){
-            alert("Easy on the gif count tiger. 99 is the max")
+            alert("Easy on the gif count tiger. 99 is the max");
             numGifs = 99;
         }
         var gifNumDisplay = $(".gif-Num-Display");
