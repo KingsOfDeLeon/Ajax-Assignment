@@ -7,7 +7,7 @@
     <title>Giphy</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="./assets/javascript/appLogic.js"></script>
 </head>
@@ -29,12 +29,22 @@
             </div>
             <div class="col-sm-4 form-Input border border-dark">
                 <form>
-                    <div class="form-group">
+                    <div class="form-group "> 
                         <label for="gif-Search">Search for a Gif!</label>
-                        <input type="text" class="form-control" id="gif-Search" placeholder="Shrek's always a good one~">
+                        <input type="text" class="form-control" id="gif-Search"
+                            placeholder="Shrek's always a good one~">
                     </div>
                     <button type="submit" class="btn btn-primary add-gif">Search</button>
                     <button type="submit" class="btn btn-primary clear">Clear</button>
+                </form>
+                <form>
+                    <div class="form-group mt-3">
+                        <label for="gif-Search">How many gifs do you want to see?</label>
+                        <input type="number" class="form-control" id="gif-Number" placeholder="25">
+                    </div>
+                    <button type="submit" class="btn btn-primary add-Gif-Number">Submit</button>
+                    <label class = "gif-Num-Display">Now displaying 25 gifs</label>
+
                 </form>
             </div>
         </div>

@@ -1,14 +1,16 @@
 $(document).ready(function () {
     //Array to populate sample gif buttons
     var gifArray = ['dog', 'cat', 'rabbit', 'hamster', 'skunk'];
+    var numGifs = 25;
 
 
     // function used to display gifs and gif ratings
     function displayGifInfo() {
         $(".gifs-Go-Here").empty();
         var gif = $(this).attr("data-name");
+        console.log(numGifs);
 
-        var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=HxNN8PMYFlAzMfWLx1MU6fWhETsHfIrb&q=" + gif + "&limit=20";
+        var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=HxNN8PMYFlAzMfWLx1MU6fWhETsHfIrb&q=" + gif + "&limit=" + numGifs;
 
         //AJAX call + img and div creation for displaying gifs and gif ratings
         $.ajax({
@@ -40,7 +42,7 @@ $(document).ready(function () {
     };
 
 
-//function used to create gif generation buttons
+    //function used to create gif generation buttons
     function renderButtons() {
         $(".buttons-Go-Here").empty();
         for (var i = 0; i < gifArray.length; i++) {
@@ -53,7 +55,7 @@ $(document).ready(function () {
         }
     };
 
-//removes all buttons
+    //removes all buttons
     function clear() {
         event.preventDefault();
         $(".buttons-Go-Here").empty();
@@ -61,7 +63,7 @@ $(document).ready(function () {
         gifArray = [];
     };
 
-// grabs text from as search criteria for giphy API. If no text provided, does nothing.
+    // grabs text from as search criteria for giphy API. If no text provided, does nothing.
     $(".add-gif").on("click", function (event) {
         event.preventDefault();
         var gif = "";
@@ -76,7 +78,7 @@ $(document).ready(function () {
         renderButtons();
     });
 
-// click event that animates or removes animation from generated gifs
+    // click event that animates or removes animation from generated gifs
     $(document).on("click", ".gif-click", function () {
         var state = $(this).attr("data-state");
         if (state === "still") {
@@ -89,11 +91,23 @@ $(document).ready(function () {
             $(this).attr("data-state", "still");
         }
     });
-//when clear button is pressed, call clear function
+    //when clear button is pressed, call clear function
     $(".clear").on("click", clear);
-//when a gif button is pressed, generate associated gifs
+
+    //Change number of Gifs to be displayed
+    $(".add-Gif-Number").on("click", function (event) {
+        event.preventDefault();
+        numGifs = $("#gif-Number").val().trim();
+        if (numGifs === "") {
+            numGifs = 25;
+        }
+        var gifNumDisplay = $(".gif-Num-Display");
+        gifNumDisplay.text("Now displaying " + numGifs +" gifs");
+    });
+
+    //when a gif button is pressed, generate associated gifs
     $(document).on("click", ".gif", displayGifInfo);
-//generates button
+    //generates button
     renderButtons();
 
 });
