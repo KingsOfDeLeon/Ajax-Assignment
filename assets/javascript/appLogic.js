@@ -101,8 +101,12 @@ $(document).ready(function () {
         if (numGifs === "") {
             numGifs = 25;
         }
+        if (numGifs > 99){
+            alert("Easy on the gif count tiger. 99 is the max")
+            numGifs = 99;
+        }
         var gifNumDisplay = $(".gif-Num-Display");
-        gifNumDisplay.text("Now displaying " + numGifs +" gifs");
+        gifNumDisplay.text("Pushing a gif button will now display " + numGifs +" gif(s)");
     });
 
     //when a gif button is pressed, generate associated gifs
