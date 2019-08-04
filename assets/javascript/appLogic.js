@@ -19,11 +19,14 @@ $(document).ready(function () {
                 console.log(response.data);
                 var results = response.data;
                 for (var i = 0; i < results.length; i++) {
-                    var gifRating = $("<div>").html("rated: " + results[i].rating);
+                    var gif = $("<div>");
+                    gif.addClass("float-sm-left m-1");
+                    var gifRating = $("<div>").html("Rated: " + results[i].rating);
                     var gifImage = $("<img>");
                     gifImage.attr("src", results[i].images.fixed_height_small.url);
-                    $('.gifs-Go-Here').append(gifRating);
-                    $('.gifs-Go-Here').append(gifImage);
+                    $(gif).append(gifRating);
+                    $(gif).append(gifImage);
+                    $(".gifs-Go-Here").append(gif);
                 }
             });
 
@@ -36,7 +39,7 @@ $(document).ready(function () {
         for (var i = 0; i < gifArray.length; i++) {
             console.log("Making buttons for " + gifArray[i]);
             var a = $("<button>");
-            a.addClass("gif btn btn-primary");
+            a.addClass("gif btn btn-primary mx-1");
             a.attr("data-name", gifArray[i]);
             a.text(gifArray[i]);
             $(".buttons-Go-Here").append(a);
